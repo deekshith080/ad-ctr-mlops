@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+mlruns/
+models/
+data/raw/
+data/processed/
+*.egg-info/
+.env
