@@ -106,7 +106,7 @@ def main():
     df = engineer_features(df)
     split_and_save(df)
 
-    print("\n✅ Feature engineering complete.")
+    print("\n Feature engineering complete.")
     print(f"   Reference: {REFERENCE_DATA_PATH}")
     print(f"   Current:   {CURRENT_DATA_PATH}")
 

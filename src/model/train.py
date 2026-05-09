@@ -16,15 +16,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score, log_loss
 from sklearn.preprocessing import LabelEncoder
 
-# ── Paths ────────────────────────────────────────────────────────
+# Paths
 REFERENCE_DATA_PATH = Path("data/processed/reference.csv")
 MODEL_DIR           = Path("models")
 MLFLOW_TRACKING_URI = "mlruns"
 
-# ── Target column ────────────────────────────────────────────────
+# Target column
 TARGET_COL = "target"
 
-# ── Model parameters ─────────────────────────────────────────────
+# Model parameters
 XGB_PARAMS = {
     "n_estimators":     300,
     "max_depth":        6,
@@ -143,7 +143,7 @@ def main():
         model_path = save_model(model, MODEL_DIR)
         mlflow.xgboost.log_model(model, "model")
 
-        print(f"\n✅ Training complete.")
+        print(f"\n Training complete.")
         print(f"   AUC:      {auc:.4f}")
         print(f"   Log Loss: {logloss:.4f}")
         print(f"   MLflow run logged to: {MLFLOW_TRACKING_URI}")
