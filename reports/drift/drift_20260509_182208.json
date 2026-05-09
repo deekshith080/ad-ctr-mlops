@@ -1,0 +1,226 @@
+{
+  "run_timestamp": "2026-05-09T18:22:08.940731",
+  "feature_scores": {
+    "intCol_0": {
+      "psi": 0.0097,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_1": {
+      "psi": 0.0008,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_2": {
+      "psi": 0.0038,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_3": {
+      "psi": 0.0009,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_4": {
+      "psi": 0.0035,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_5": {
+      "psi": 0.0047,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_6": {
+      "psi": 0.0011,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_7": {
+      "psi": 0.0005,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_8": {
+      "psi": 0.0009,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_9": {
+      "psi": 0.0038,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_10": {
+      "psi": 0.0009,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_11": {
+      "psi": 0.0002,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "intCol_12": {
+      "psi": 0.0013,
+      "type": "numeric",
+      "severity": "stable"
+    },
+    "catCol_0": {
+      "psi": 0.025,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_1": {
+      "psi": 0.1251,
+      "type": "categorical",
+      "severity": "moderate_drift"
+    },
+    "catCol_2": {
+      "psi": 1.822,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_3": {
+      "psi": 1.0759,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_4": {
+      "psi": 0.0061,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_5": {
+      "psi": 0.0073,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_6": {
+      "psi": 0.4414,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_7": {
+      "psi": 0.0117,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_8": {
+      "psi": 0.0001,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_9": {
+      "psi": 0.5202,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_10": {
+      "psi": 0.2856,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_11": {
+      "psi": 1.7192,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_12": {
+      "psi": 0.2296,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_13": {
+      "psi": 0.0108,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_14": {
+      "psi": 0.361,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_15": {
+      "psi": 1.455,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_16": {
+      "psi": 0.0012,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_17": {
+      "psi": 0.2401,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_18": {
+      "psi": 0.0891,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_19": {
+      "psi": 0.0028,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_20": {
+      "psi": 1.6139,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_21": {
+      "psi": 0.0071,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_22": {
+      "psi": 0.0067,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_23": {
+      "psi": 0.5625,
+      "type": "categorical",
+      "severity": "severe_drift"
+    },
+    "catCol_24": {
+      "psi": 0.0799,
+      "type": "categorical",
+      "severity": "stable"
+    },
+    "catCol_25": {
+      "psi": 0.3444,
+      "type": "categorical",
+      "severity": "severe_drift"
+    }
+  },
+  "summary": {
+    "mean_psi": 0.284,
+    "max_psi": 1.822,
+    "n_stable": 25,
+    "n_moderate_drift": 1,
+    "n_severe_drift": 13,
+    "severe_features": [
+      "catCol_2",
+      "catCol_3",
+      "catCol_6",
+      "catCol_9",
+      "catCol_10",
+      "catCol_11",
+      "catCol_12",
+      "catCol_14",
+      "catCol_15",
+      "catCol_17",
+      "catCol_20",
+      "catCol_23",
+      "catCol_25"
+    ],
+    "moderate_features": [
+      "catCol_1"
+    ],
+    "retrain_recommended": true
+  }
+}

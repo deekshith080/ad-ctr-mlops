@@ -1,0 +1,14 @@
+{
+  "run_timestamp": "2026-05-09T18:17:12.693777",
+  "feature_scores": {},
+  "summary": {
+    "mean_psi": 0.0,
+    "max_psi": 0.0,
+    "n_stable": 0,
+    "n_moderate_drift": 0,
+    "n_severe_drift": 0,
+    "severe_features": [],
+    "moderate_features": [],
+    "retrain_recommended": false
+  }
+}
