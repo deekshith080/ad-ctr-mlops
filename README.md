@@ -7,11 +7,11 @@ End-to-end MLOps pipeline for Click-Through Rate prediction using XGBoost, MLflo
 | Metric | Value |
 |--------|-------|
 | Model | XGBoost Classifier |
-| Training Data | 70,000 rows (Criteo dataset) |
+| Training Data | 70,000 rows Criteo dataset |
 | Validation AUC | 0.7589 |
 | Log Loss | 0.4517 |
-| Features | 39 (13 numeric + 26 categorical) |
-| API Latency | < 100ms |
+| Features | 39 total |
+| API Latency | under 100ms |
 
 ## Tech Stack
 
@@ -28,15 +28,56 @@ End-to-end MLOps pipeline for Click-Through Rate prediction using XGBoost, MLflo
 
 ## Architecture
 
+```
+Criteo Data 1M rows
+      |
+      v
+Feature Engineering -- build_features.py
+      |
+      v
+XGBoost Training -- train.py --> MLflow Tracking
+      |
+      v
+FastAPI REST API -- /predict /health /model/info
+      |
+      v
+Streamlit Dashboard -- live predictions and drift charts
 
+Every Monday via Airflow DAG:
+  drift_detector.py --> PSI scores for 39 features
+  evaluate.py       --> AUC vs baseline 0.7589
+  If severe drift or AUC drop --> Telegram alert fired
+```
 
 ## Project Structure
 
-
+```
+ad-ctr-mlops/
+├── src/
+│   ├── features/build_features.py
+│   ├── model/train.py
+│   ├── model/evaluate.py
+│   ├── monitoring/drift_detector.py
+│   └── api/app.py
+├── dags/drift_detection_dag.py
+├── streamlit_app.py
+├── Dockerfile
+├── docker-compose.yml
+└── requirements.txt
+```
 
 ## Quick Start
 
-
+```bash
+git clone https://github.com/deekshith080/ad-ctr-mlops.git
+cd ad-ctr-mlops
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 src/model/train.py
+uvicorn src.api.app:app --reload --port 8000
+streamlit run streamlit_app.py
+```
 
 ## API Endpoints
 
@@ -52,18 +93,18 @@ Interactive docs: http://localhost:8000/docs
 
 | PSI Score | Status | Action |
 |-----------|--------|--------|
-| < 0.1 | Stable | None needed |
+| below 0.1 | Stable | None needed |
 | 0.1 to 0.2 | Moderate | Monitor |
-| > 0.2 | Severe | Retrain now |
+| above 0.2 | Severe | Retrain now |
 
 ## Monitoring Pipeline
 
 Airflow DAG runs every Monday at 01:00 UTC.
 Sends Telegram alert automatically when:
-- Any feature PSI > 0.2 (severe drift)
-- AUC drops more than 2% vs baseline (0.7589)
+- Any feature PSI above 0.2
+- AUC drops more than 2 percent vs baseline
 
 ## Author
 
-Deekshith - Data/ML Engineer
+Deekshith - Data and ML Engineer
 GitHub: https://github.com/deekshith080
