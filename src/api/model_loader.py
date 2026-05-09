@@ -57,9 +57,12 @@ class ModelLoader:
         logger.info(f"Loading model from: {model_uri}")
         mlflow.set_tracking_uri("mlruns")
 
-        self.model     = mlflow.xgboost.load_model(model_uri)
+        import xgboost as xgb
+        m = xgb.XGBClassifier()
+        m.load_model(model_uri)
+        self.model = m
         self.model_uri = model_uri
-        self.run_id    = model_uri.split("/")[1] if "runs:/" in model_uri else model_uri
+        self.run_id = "local"
 
         logger.info("Fitting label encoders on reference data...")
         ref_df = pd.read_csv(reference_data_path, nrows=70_000)

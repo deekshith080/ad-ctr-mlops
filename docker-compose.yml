@@ -1,0 +1,68 @@
+# docker-compose.yml
+# Runs the entire ad-ctr-mlops stack with one command:
+#   docker-compose up
+#
+# Services:
+#   api       - FastAPI CTR prediction service (port 8000)
+#   mlflow    - MLflow tracking server (port 5000)
+#   streamlit - Monitoring dashboard (port 8501)
+
+version: "3.9"
+
+services:
+
+  #FastAPI prediction service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ctr-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./data/processed:/app/data/processed
+    environment:
+      - MODEL_URI=runs:/62ede5ab63ba4fdab06df673b287d5f8/model
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  # MLflow tracking server
+  mlflow:
+    image: python:3.10-slim
+    container_name: ctr-mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlruns
+    command: >
+      bash -c "pip install mlflow --quiet &&
+               mlflow server
+               --host 0.0.0.0
+               --port 5000
+               --backend-store-uri /mlruns"
+    restart: unless-stopped
+
+  # Streamlit dashboard
+  streamlit:
+    image: python:3.10-slim
+    container_name: ctr-streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      bash -c "pip install streamlit pandas requests --quiet &&
+               streamlit run streamlit_app.py
+               --server.port 8501
+               --server.address 0.0.0.0"
+    depends_on:
+      - api
+    restart: unless-stopped
+
