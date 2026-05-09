@@ -8,3 +8,4 @@ data/raw/
 data/processed/
 *.egg-info/
 .env
+airflow/
