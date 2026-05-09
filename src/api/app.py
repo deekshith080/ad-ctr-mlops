@@ -24,7 +24,7 @@ from src.api.model_loader import model_loader
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-MODEL_URI = os.getenv("MODEL_URI", "runs:/62ede5ab63ba4fdab06df673b287d5f8/model")
+MODEL_URI = os.getenv("MODEL_URI", "models/ctr_model.json")
 
 
 @asynccontextmanager

@@ -1,0 +1,33 @@
+# .dockerignore
+# Files Docker should NOT copy into the container.
+# Same concept as .gitignore but for Docker builds.
+
+# Virtual environment - huge, not needed (container installs its own)
+venv/
+
+# Raw data - too large, not needed for API
+data/raw/
+
+# Airflow files - not needed in API container
+airflow/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Mac files
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Environment files - never put secrets in containers
+.env
+
+# Logs
+logs/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
